@@ -13,6 +13,9 @@ const CategoryController = require('../controllers/CategoryController');
 const SubCategoryController = require('../controllers/SubCategoryController');
 
 const ProductController = require('../controllers/ProductController');
+
+const AddToCartController = require('../controllers/AddToCartController');
+
 //login and register
 
 routes.get('/', adminController.index);
@@ -57,5 +60,14 @@ routes.delete('/deleteProduct',ProductController.deleteProduct);
 
 routes.put('/updateProduct',fileupload,ProductController.updateProduct);
 
+//addto cart
+
+routes.post('/addtocart',AddToCartController.addtocart);    
+
+routes.get('/viewaddToCart',AddToCartController.viewaddToCart);
+
+routes.delete('/deleteAddToCart',AddToCartController.deleteAddToCart);
+
+routes.put('/updateaddToCart',AddToCartController.updateaddToCart);
 
 module.exports = routes;
