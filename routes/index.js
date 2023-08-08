@@ -32,42 +32,42 @@ routes.post('/login', adminController.login);
 
 //category
 
-routes.post('/insertCategory',CategoryController.insertCategory);
+routes.post('/insertCategory', passport.authenticate('jwt', { session: false }),CategoryController.insertCategory);
 
-routes.get('/viewCategoryData', passport.authenticate('jwt', { session: false }),CategoryController.viewCategoryData);
+routes.get('/viewCategoryData', passport.authenticate('jwt', { session: false }), passport.authenticate('jwt', { session: false }),CategoryController.viewCategoryData);
 
-routes.delete('/deleteCategoryData',CategoryController.deleteCategoryData);
+routes.delete('/deleteCategoryData', passport.authenticate('jwt', { session: false }),CategoryController.deleteCategoryData);
 
-routes.put('/updateCategoryData',CategoryController.updateCategoryData);
+routes.put('/updateCategoryData', passport.authenticate('jwt', { session: false }),CategoryController.updateCategoryData);
 
 //Subcategory
 
-routes.post('/insertSubCategory',SubCategoryController.insertSubCategory);
+routes.post('/insertSubCategory', passport.authenticate('jwt', { session: false }),SubCategoryController.insertSubCategory);
 
 routes.get('/viewSubCategoryData', passport.authenticate('jwt', { session: false }),SubCategoryController.viewSubCategoryData);
 
-routes.delete('/deleteSubCategoryData',SubCategoryController.deleteSubCategoryData);
+routes.delete('/deleteSubCategoryData', passport.authenticate('jwt', { session: false }),SubCategoryController.deleteSubCategoryData);
 
-routes.put('/updateSubCategoryData',SubCategoryController.updateSubCategoryData);
+routes.put('/updateSubCategoryData', passport.authenticate('jwt', { session: false }),SubCategoryController.updateSubCategoryData);
 
 //product
 
-routes.post('/insertProduct',fileupload,ProductController.insertProduct);
+routes.post('/insertProduct',fileupload, passport.authenticate('jwt', { session: false }),ProductController.insertProduct);
 
 routes.get('/viewProduct', passport.authenticate('jwt', { session: false }),ProductController.viewProduct);
 
-routes.delete('/deleteProduct',ProductController.deleteProduct);
+routes.delete('/deleteProduct', passport.authenticate('jwt', { session: false }),ProductController.deleteProduct);
 
-routes.put('/updateProduct',fileupload,ProductController.updateProduct);
+routes.put('/updateProduct', passport.authenticate('jwt', { session: false }),fileupload,ProductController.updateProduct);
 
 //addto cart
 
-routes.post('/addtocart',AddToCartController.addtocart);    
+routes.post('/addtocart', passport.authenticate('jwt', { session: false }),AddToCartController.addtocart);    
 
-routes.get('/viewaddToCart',AddToCartController.viewaddToCart);
+routes.get('/viewaddToCart', passport.authenticate('jwt', { session: false }),AddToCartController.viewaddToCart);
 
-routes.delete('/deleteAddToCart',AddToCartController.deleteAddToCart);
+routes.delete('/deleteAddToCart', passport.authenticate('jwt', { session: false }),AddToCartController.deleteAddToCart);
 
-routes.put('/updateaddToCart',AddToCartController.updateaddToCart);
+routes.put('/updateaddToCart', passport.authenticate('jwt', { session: false }),AddToCartController.updateaddToCart);
 
 module.exports = routes;
